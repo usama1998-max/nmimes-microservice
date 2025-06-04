@@ -1,0 +1,6 @@
+.env
+run.cmd
+run.sh
+.venv
+.idea
+__pycache__
