@@ -278,13 +278,8 @@ def prompt_format(prompt: str, history: str):
 """ + f"{history} \n\n{prompt}"
 
 
-def analyze_prompt(history: str):
-    response = llm.chat.completions.create(
-        model="gpt-4o-mini",
-
-        messages=[
-            {"role": "user", "content":"""
-            Question Number 1
+"""
+Question Number 1
             Topic: Emotional check-In
             Question: How do you feel about mathematics?
             User Answered: Difficult
@@ -357,7 +352,14 @@ def analyze_prompt(history: str):
             Question: What is the value of x in the equation 3x + 5 = 20?
             User Answered: 8
             Correct Answer: 5            
-            Time Taken: 2025-05-24 23:59
+            Time Taken: 2025-05-24 23:59"""
+
+def analyze_prompt(history: str):
+    response = llm.chat.completions.create(
+        model="gpt-4o-mini",
+
+        messages=[
+            {"role": "user", "content": history + """\n
 
             ### Based on the given user assessment, provide the level (1, 2 or 3) and create a lesson plan or roadmap for user based on week. Provide a json response. 
             ### Keep the topic name same, do not create topic name from yourself. Select same topic name from the history of user. 
